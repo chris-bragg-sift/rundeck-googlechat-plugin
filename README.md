@@ -106,6 +106,8 @@ Against host ${executionData.context.option.target}
 
 ```
 
+![example](example.png)
+
 This can give you much more compact messages should you want that.
 
 ## Contributors
