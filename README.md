@@ -2,6 +2,7 @@ rundeck-googlechat-plugin
 ======================
 
 *** A work in progress - not polished but does the job ***
+
 Sends rundeck notification messages to a googlechat webhook, hipchat being EOL'd forced me to choose another notifier (G-Suite). 
 This plugin is adapted from the Slack Plugin by Andrew Karpow based on the HipChat Plugin by Hayden Bakkum.
 A massive thank you to these developers and a chance for me to create my first java plugin based on their knowhow.
