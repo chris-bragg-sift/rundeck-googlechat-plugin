@@ -22,7 +22,8 @@ This plugin uses GoogleChat webhooks. Create a new webhook and copy the provided
 
 The only required configuration settings are:
 
-- `API Auth Token`: webhook url
+- `Webhook URL`: The googlechat webhook to a room in google chat.
+- `Template name`: The template in `/etc/rundeck/templates`.
 
 Additionally you can set:
 
