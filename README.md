@@ -1,14 +1,13 @@
 rundeck-googlechat-plugin
 ======================
 
-Sends rundeck notification messages to a googlechat webhook. This plugin 
-is adapted from the Slack Plugin by Andrew Karpow based on the HipChat Plugin by Hayden Bakkum.
-A massive thank you to these developers and a chance for me to create my first 
-Java Plugin based on their knowhow.
+Sends rundeck notification messages to a googlechat webhook, hipchat being EOL'd forced me to choose another notifier (G-Suite). 
+This plugin is adapted from the Slack Plugin by Andrew Karpow based on the HipChat Plugin by Hayden Bakkum.
+A massive thank you to these developers and a chance for me to create my first java plugin based on their knowhow.
 
 Installation Instructions
 -------------------------
-Tested against 2.10.0-1 
+Tested against 2.10.0-1, not handling responses from chat yet.
 1. build the source
 2. Copy the plugin jar (rundeck-googlechat-plugin-\<version\>.jar) into your $RDECK_BASE/libext - no restart of rundeck required. 
 
@@ -23,18 +22,19 @@ This plugin uses GoogleChat webhooks. Create a new webhook and copy the provided
 The only required configuration settings are:
 
 - `Webhook URL`: The googlechat webhook to a room in google chat.
-- `Template name`: The template in `/etc/rundeck/templates`.
+- `Template name`: The template in `/etc/rundeck/templates` 
+  ( example - rundeck-googlechat-plugin/src/main/resources/templates/google-chat-message.ftl )
 
 Additionally you can set:
 
-### External Templates
-The HipChat plugin this was based off used FreeMarker templates for building the JSON to post to Slack. The challenge is when you wanted to change the layout of a message.
+### Freemarket Templates
+The challenge is when you wanted to change the layout of a message.
 Since the FreeMarker template was compiled in that meant recompiling the plugin for every change to the template.
 Additionally it meant you could not customize the template based on job status.
 
-The setting `External Template` allows you to define a FreeMarker template that you want to use for the formatting of the Slack message. This is PER trigger so you can use a different template for start, failure and success and do so for each job.
+The setting `External Template` allows you to define a FreeMarker template that you want to use for the formatting of the google chat message. This is PER trigger so you can use a different template for start, failure and success and do so for each job.
 
-To use this, you'll need drop you templates in this directory `/etc/rundeck/templates` (This will be made customizable at some point). In that directory you can place FreeMarker templates for the JSON you want to post to GoogleChat. The value for this setting is the name of the file (without the path).
+To use this, you'll need drop you templates in this directory `/etc/rundeck/templates`. In that directory you can place FreeMarker templates for the JSON you want to post to GoogleChat. The value for this setting is the name of the file (without the path).
 
 All the job context is passed in as a map named `externalData`.
 
