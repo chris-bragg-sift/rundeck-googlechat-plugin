@@ -27,7 +27,7 @@ The only required configuration settings are:
 
 Additionally you can set:
 
-### Freemarket Templates
+### Freemarker Templates
 The challenge is when you wanted to change the layout of a message.
 Since the FreeMarker template was compiled in that meant recompiling the plugin for every change to the template.
 Additionally it meant you could not customize the template based on job status.
