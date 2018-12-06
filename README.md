@@ -8,7 +8,7 @@ Java Plugin based on their knowhow.
 
 Installation Instructions
 -------------------------
-
+Tested against 2.10.0-1 
 1. build the source
 2. Copy the plugin jar (rundeck-googlechat-plugin-\<version\>.jar) into your $RDECK_BASE/libext - no restart of rundeck required. 
 
