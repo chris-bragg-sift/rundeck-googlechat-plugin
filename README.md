@@ -8,7 +8,7 @@ A massive thank you to these developers and a chance for me to create my first j
 Installation Instructions
 -------------------------
 Tested against 2.10.0-1, not handling responses from chat yet.
-1. build the source
+1. build the source (run ./gradle or .\gradle.bat - WIN 10)
 2. Copy the plugin jar (rundeck-googlechat-plugin-\<version\>.jar) into your $RDECK_BASE/libext - no restart of rundeck required. 
 
 See the [rundeck documentation](http://rundeck.org/docs/manual/plugins.html#installing-plugins) for more 
