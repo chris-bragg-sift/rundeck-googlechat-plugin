@@ -74,8 +74,8 @@ public class GoogleChatNotificationPlugin implements NotificationPlugin {
     @PluginProperty(
             title = "Google Chat Hangouts WEBHOOK",
             description = "Google Chat Hangouts Webhook for sending notifications.",
-            defaultValue = GOOGLECHAT_API_WEBHOOK_PATH,
-            required = true
+            defaultValue = "",
+            required = false
     )
     private String googleChatWebhook;
 
@@ -141,6 +141,13 @@ public class GoogleChatNotificationPlugin implements NotificationPlugin {
         TRIGGER_NOTIFICATION_DATA.put(TRIGGER_SUCCESS, new GoogleChatNotificationData(ACTUAL_GOOGLECHAT_TEMPLATE, GOOGLECHAT_MESSAGE_COLOR_GREEN));
         TRIGGER_NOTIFICATION_DATA.put(TRIGGER_FAILURE, new GoogleChatNotificationData(ACTUAL_GOOGLECHAT_TEMPLATE, GOOGLECHAT_MESSAGE_COLOR_RED));
 
+        String ACTUAL_GOOGLECHAT_API_WEBHOOK_PATH;
+        if(null != googleChatWebhook && !googleChatWebhook.isEmpty()) {
+            ACTUAL_GOOGLECHAT_API_WEBHOOK_PATH = googleChatWebhook;
+        }else{
+            ACTUAL_GOOGLECHAT_API_WEBHOOK_PATH = GOOGLECHAT_API_WEBHOOK_PATH;
+        }
+
         try {
             FREEMARKER_CFG.setSetting(Configuration.CACHE_STORAGE_KEY, "strong:20, soft:250");
         }catch(Exception e){
@@ -195,7 +202,7 @@ public class GoogleChatNotificationPlugin implements NotificationPlugin {
 
     private String invokeGoogleAPIMethod(String message) {
         
-        URL requestUrl = toURL(GOOGLECHAT_API_WEBHOOK_PATH);
+        URL requestUrl = toURL(ACTUAL_GOOGLECHAT_API_WEBHOOK_PATH);
 
         HttpURLConnection connection = null;
         InputStream responseStream = null;
